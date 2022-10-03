@@ -1,0 +1,20 @@
+
+
+.buttons {
+    height: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.button {
+    background: #6DCCEFFF;
+    margin: 20px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 200px;
+    border-radius: 10px;
+    border-color: #6DCCEFFF;
+
+}

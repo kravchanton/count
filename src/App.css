@@ -1,10 +1,22 @@
 body {
   background: #3d454b;
 }
-
 .App {
+  display: flex;
+  justify-content: center;
+}
+.counter {
   display: grid;
-  margin: 20em auto 0;
+  margin: 200px 2em;
+  width: 500px;
+  height: 300px;
+  border: 3px solid #6DCCEFFF;
+  border-radius: 20px
+}
+.Setting {
+  margin: 200px 2em;
+
+  display: grid;
   width: 500px;
   height: 300px;
   border: 3px solid #6DCCEFFF;

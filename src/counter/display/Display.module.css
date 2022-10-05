@@ -1,0 +1,35 @@
+.display {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+    border: 3px solid #6DCCEFFF;
+    border-radius: 20px
+}
+
+.textBlue {
+    font-size: 40px;
+    font-weight: bold;
+    color: #6DCCEFFF;
+
+}
+
+.textRed {
+    font-size: 50px;
+    font-weight: bold;
+    color: red;
+
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.input {
+    height: 40px;
+    width: 100px;
+}

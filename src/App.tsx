@@ -1,9 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Display} from "./counter/display/Display";
-import {Button} from "./counter/buttons/Button";
-import style from './counter/buttons/buttons.module.css'
 import {Counter} from "./counter/Counter";
 import {Setting} from "./counter/Setting";
 
@@ -36,13 +32,13 @@ function App() {
     const increment = () => {
 
         setCount(++count)
-        localStorage.setItem('count', String(count));
+        localStorage.setItem('count', JSON.stringify(count));
         if (count >= maxValue) {
             setDisabled(true)
         } else setDisabled(false)
     }
     const reset = () => {
-        localStorage.setItem('count', String(0));
+        localStorage.setItem('count', JSON.stringify(0));
         setCount(0)
         if (0 >= maxValue) {
             setDisabled(true)
@@ -51,8 +47,11 @@ function App() {
 
     }
     useEffect(() => {
-        setCount(Number(localStorage.getItem('count')))
-    })
+       let localCount = localStorage.getItem('count')
+        if(localCount) {
+            setCount(JSON.parse(localCount))
+        }
+    }, [])
 
     return <div className='App'>
         <Setting setValue={setValue} changeMaxValue={changeMaxValue} changeStartValue={changeStartValue}

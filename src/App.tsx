@@ -2,10 +2,12 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Counter} from "./counter/Counter";
 import {Setting} from "./counter/Setting";
+import {useSelector} from "react-redux";
+import {appStateType} from "./bll/store";
 
 function App() {
-
-    let [count, setCount] = useState(0)
+// @ts-ignore
+    const count = useSelector<appStateType, number>(state => state.counter.count)
     const [maxValue, setMaxValue] = useState<number>(5)
     const [startValue, setStartValue] = useState<number>(0)
     let [disabled, setDisabled] = useState<boolean>(false)
@@ -25,13 +27,13 @@ function App() {
         setStartValue(e.value)
     }
     const setValue = () => {
-
-        setCount(startValue)
+/*
+        setCount(startValue)*/
         disabledButton(maxValue)
     }
     const increment = () => {
 
-        setCount(++count)
+/*        setCount(++count)*/
         localStorage.setItem('count', JSON.stringify(count));
         if (count >= maxValue) {
             setDisabled(true)
@@ -39,7 +41,7 @@ function App() {
     }
     const reset = () => {
         localStorage.setItem('count', JSON.stringify(0));
-        setCount(0)
+/*        setCount(0)*/
         if (0 >= maxValue) {
             setDisabled(true)
         } else setDisabled(false)
@@ -49,14 +51,14 @@ function App() {
     useEffect(() => {
        let localCount = localStorage.getItem('count')
         if(localCount) {
-            setCount(JSON.parse(localCount))
+/*            setCount(JSON.parse(localCount))*/
         }
     }, [])
 
     return <div className='App'>
         <Setting setValue={setValue} changeMaxValue={changeMaxValue} changeStartValue={changeStartValue}
                  startValue={startValue} maxValue={maxValue} disabled={disabled}/>
-        <Counter reset={reset} increment={increment} count={count} disabled={disabled}/>
+        <Counter reset={reset} count={count} disabled={disabled}/>
     </div>
 
 

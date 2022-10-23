@@ -1,8 +1,9 @@
 import React from 'react';
 import style from './buttons.module.css'
+import {useDispatch} from "react-redux";
+import {incValueAC} from "../../bll/counter-reducer";
 
 type buttonType = {
-    increment?: () => void
     reset?: () => void
     set?: () => void
     disabled: boolean
@@ -10,11 +11,17 @@ type buttonType = {
 }
 export const Button = (props: buttonType) => {
 
+
+    const dispatch = useDispatch()
+
+    const increment = () => {
+        dispatch(incValueAC())
+    }
     const selectButton = (title: string) => {
         switch (title) {
             case 'inc': {
                 return <button className={style.button} disabled={props.disabled}
-                               onClick={props.increment}>{props.title}</button>;
+                               onClick={increment}>{props.title}</button>;
             }
             case 'reset': {
                 return <button className={style.button} onClick={props.reset}>{props.title}</button>
